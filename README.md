@@ -123,8 +123,8 @@ This is really simple just use setValue() function. First paramether is the cell
 
 #  How to copy and paste columns in a excel file ?
 
-For copy and paste columns you can use shiftAndCopyColumns() function. 
-Lets assume that you have a excel file like this.
+For copy and paste columns you can use shiftAndCopyColumns() function. Lets assume that you have a excel file like this.
+
 
 ![pasteCol1](https://i.imgur.com/e61IX3w.png)
 
