@@ -3,12 +3,12 @@
 Includes useful functions for updating excel file with apache poi  like adding rows, adding cols etc.
 
 
-# You can find answer for these questions in this repository in that repository.
+# You can find answers for these questions in that repository.
  
 
  ### How to download excel file?  
   
-  ### How to update a excel file with apach poi?  
+ ### How to update a excel file with apach poi?  
   
  ### How to add rows in a excel file?  
   
