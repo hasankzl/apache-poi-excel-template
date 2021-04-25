@@ -32,12 +32,13 @@ public class ExcelServiceImpl implements ExcelService {
     public ByteArrayOutputStream shiftAndCopyRowFillData() throws IOException {
         ExcelTemplate excelTemplate = new ExcelTemplate("static/testAddingRow.xlsx");
         excelTemplate.setSheet(0);
-        String[] cellValues = {"A","B","C","D","E"};
+        String[] cellValues = {"A","B","C","D","E","F"};
         List<Object[]> dataList = new ArrayList<>();
         Object[] obj = new Object[]{
                 "hasan",
                 "kuzulu",
-                "00000000",
+                112321321,
+                12.3,
                 "Istanbul",
                 "mhasan.kzl@gmail.com"
         };
@@ -45,7 +46,8 @@ public class ExcelServiceImpl implements ExcelService {
         Object[] obj2 = new Object[]{
                 "Julian ",
                 "alexander",
-                "00000000",
+                123123123,
+                17.3,
                 "USA",
                 "julian.alexander@example.com"
         };

@@ -53,7 +53,7 @@ public class ExcelTemplate {
      * @param cellAddress addressOf the cell
      * @param cellValue data to be written to the address
      */
-    public void setValue(String cellAddress,String cellValue){
+    public void setValue(String cellAddress,Object cellValue){
 
         address = new CellAddress(cellAddress);
         cellForUpdate = sheet.getRow(address.getRow()).getCell(address.getColumn());
@@ -63,7 +63,18 @@ public class ExcelTemplate {
             sheet.getRow(address.getRow()).createCell(address.getColumn());
             cellForUpdate = sheet.getRow(address.getRow()).getCell(address.getColumn());
         }
-        cellForUpdate.setCellValue(cellValue);
+         if(cellValue instanceof Double){
+            cellForUpdate.setCellValue(((Double) cellValue).doubleValue());
+        }
+        else if(cellValue instanceof Integer){
+            cellForUpdate.setCellValue(((Integer) cellValue).intValue());
+        }
+        else if (cellValue instanceof  String){
+            cellForUpdate.setCellValue(cellValue.toString());
+        }
+        else{
+            cellForUpdate.setCellValue(cellValue.toString());
+        }
     }
 
     private void closeInputStream() throws IOException {
@@ -132,7 +143,7 @@ public class ExcelTemplate {
        int index=0;
         for(Object[] data: dataList){
             for(int i=0; i< data.length;i++){
-                setValue(cellValues[i]+(startRow+index),(String) data[i]);
+                setValue(cellValues[i]+(startRow+index),data[i]);
             }
             index++;
 
