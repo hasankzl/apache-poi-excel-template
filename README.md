@@ -19,7 +19,7 @@ Includes useful functions for updating excel file with apache poi  like adding r
  ### How to copy and paste columns in a excel file ? (merged cells included)
 
 ## How to work with ExcelTemplate class?
-ExcelTemplate class take a paramether witch is the file name.
+Excel Template class take a parameter which is the file name.
 
     ExcelTemplate excelTemplate = new ExcelTemplate("test.xlsx");
 (ExcelTemplate tryies to find your excel file in resource you can look at constroctor function of ExcelTemplate)
@@ -53,8 +53,9 @@ You can check resource/ExcelController for more examples.
 
 ## How to add rows in a excel file?  
 
-For adding row you can use shiftAndCopyRows() function. This function will shift the rows and copy a column in that shifted places. For example lets assume that you have a excel file like this
+For adding row you can use shiftAndCopyRows() function. This function will shift the rows and copy columns in that shifted places. For example lets assume that you have a excel file like this
 ![addrowexample](https://i.imgur.com/IWDEmO8.png)
+ 
  and you wanna add new rows in that table. To do that you can simply use shiftAndCopyRows().
  
 
@@ -141,3 +142,9 @@ Now letst coppy columns between 1. and 3. column and paste in 3 times starting w
 
 After that our file will be updated to this
 ![addingCol2](https://i.imgur.com/E5aSOXf.png)
+
+You can find all the examples above in the project.
+localhost:8080/excel/
+localhost:8080/excel/shiftAndCopyRow
+localhost:8080/excel/shiftAndCopyRowFillData
+localhost:8080/excel/shiftAndCopyColumn
