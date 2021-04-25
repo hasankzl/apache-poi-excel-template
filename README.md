@@ -53,7 +53,7 @@ You can check resource/ExcelController for more examples.
 
 ## How to add rows in a excel file?  
 
-For adding row you can use shiftAndCopyRows() function. This function will shift the rows and copy columns in that shifted places. For example lets assume that you have a excel file like this
+For adding row you can use shiftAndCopyRows() function. This function will shift the rows and copy columns in that shifted places. For example lets assume that you have a excel file like this 
 ![addrowexample](https://i.imgur.com/IWDEmO8.png)
  
  and you wanna add new rows in that table. To do that you can simply use shiftAndCopyRows().
@@ -145,6 +145,9 @@ After that our file will be updated to this
 
 You can find all the examples above in the project.
 localhost:8080/excel/
+
 localhost:8080/excel/shiftAndCopyRow
+
 localhost:8080/excel/shiftAndCopyRowFillData
+
 localhost:8080/excel/shiftAndCopyColumn
