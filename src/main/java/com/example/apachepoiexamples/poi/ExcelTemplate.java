@@ -37,8 +37,9 @@ public class ExcelTemplate {
 
         this.filePath = filePath;
         ClassLoader classLoader = getClass().getClassLoader();
-        inputStream = new FileInputStream(new File(Objects.requireNonNull(classLoader.getResource("static/"+filePath)).getFile()));
+        inputStream = new FileInputStream(new File(Objects.requireNonNull(classLoader.getResource(filePath)).getFile()));
         workbook = new XSSFWorkbook(inputStream);
+        setSheet(0);
     }
 
     public void setSheet(Integer number){
@@ -117,21 +118,24 @@ public class ExcelTemplate {
         }
         // after shifting copy row
         for (int i=0;i<rowCount -1;i++){
-            sheet.copyRows(copyStartRow,copyEndRow,startRow+i,cellCopyPolicy);
+            sheet.copyRows(copyStartRow+i,copyEndRow+i,startRow+i,cellCopyPolicy);
         }
     }
     /**
      * Shifts down the rows between startRow and the last row in excel by rowCount-1
      * After that, it copies the lines between copyStartRow and copyEndRow starting with startRow Copies up to rowCount
-     * @param dataList data to be written to cells
      * @param cellValues array of columns to write data to (like: "A","B","F")
      * @param startRow the index of the starting number of copying
+     * @param dataList data to be written to cells
      */
     public void fillRows(Integer startRow, String[] cellValues, List<Object[]> dataList){
+       int index=0;
         for(Object[] data: dataList){
             for(int i=0; i< data.length;i++){
-                setValue(cellValues[i]+startRow,(String) data[i]);
+                setValue(cellValues[i]+(startRow+index),(String) data[i]);
             }
+            index++;
+
         }
     }
 
@@ -188,9 +192,9 @@ public class ExcelTemplate {
         sheet.shiftColumns(shiftStartCol,getSheetLastColNumber(),shiftCount);
         for (int i = 0; i < copyCount; i++) {
             for (CellRangeAddress range : cellRangeAddressList) {
-                range.setFirstColumn(range.getFirstColumn() +copyColumnCount+ copyColumnCount * i);
-                range.setLastColumn(range.getLastColumn() +copyColumnCount+ copyColumnCount * i);
-                sheet.addMergedRegion(range);
+               CellRangeAddress newRange = new CellRangeAddress(range.getFirstRow(),range.getLastRow(),
+                       range.getFirstColumn() +copyColumnCount+ copyColumnCount * i,range.getLastColumn() +copyColumnCount+ copyColumnCount * i);
+                sheet.addMergedRegion(newRange);
             }
             for (int k = 0; k < mainCellList.size(); k++) {
                 Cell oldCell = mainCellList.get(k);

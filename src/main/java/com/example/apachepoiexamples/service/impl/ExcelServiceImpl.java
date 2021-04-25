@@ -16,13 +16,13 @@ import java.util.List;
 public class ExcelServiceImpl implements ExcelService {
     @Override
     public ByteArrayOutputStream getExcel() throws IOException {
-        ExcelTemplate excelTemplate = new ExcelTemplate("test.xlsx");
+        ExcelTemplate excelTemplate = new ExcelTemplate("static/test.xlsx");
         return excelTemplate.getOutputStream();
     }
 
     @Override
     public ByteArrayOutputStream shiftAndCopyRow() throws IOException {
-        ExcelTemplate excelTemplate = new ExcelTemplate("test.xlsx");
+        ExcelTemplate excelTemplate = new ExcelTemplate("static/testAddingRow.xlsx");
         excelTemplate.setSheet(0);
         excelTemplate.shiftAndCopyRows(1,2,2,4);
         return excelTemplate.getOutputStream();
@@ -30,9 +30,9 @@ public class ExcelServiceImpl implements ExcelService {
 
     @Override
     public ByteArrayOutputStream shiftAndCopyRowFillData() throws IOException {
-        ExcelTemplate excelTemplate = new ExcelTemplate("test.xlsx");
+        ExcelTemplate excelTemplate = new ExcelTemplate("static/testAddingRow.xlsx");
         excelTemplate.setSheet(0);
-        String[] fillRows = {"A","B","C","D"};
+        String[] cellValues = {"A","B","C","D","E"};
         List<Object[]> dataList = new ArrayList<>();
         Object[] obj = new Object[]{
                 "hasan",
@@ -52,13 +52,13 @@ public class ExcelServiceImpl implements ExcelService {
         dataList.add(obj);
         dataList.add(obj2);
         excelTemplate.shiftAndCopyRows(1,2,2,dataList.size());
-        excelTemplate.fillRows(2,fillRows,dataList);
+        excelTemplate.fillRows(2,cellValues,dataList);
         return excelTemplate.getOutputStream();
     }
 
     @Override
     public ByteArrayOutputStream shiftAndCopyColumn() throws IOException {
-        ExcelTemplate excelTemplate = new ExcelTemplate("test.xlsx");
+        ExcelTemplate excelTemplate = new ExcelTemplate("static/test.xlsx");
         excelTemplate.setSheet(0);
 
         excelTemplate.shiftAndCopyColumns(1,3,4 ,3);
