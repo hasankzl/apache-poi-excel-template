@@ -128,7 +128,7 @@ Lets assume that you have a excel file like this.
 
 ![pasteCol1](https://i.imgur.com/e61IX3w.png)
 
-Somehow you need to copy surname,tel,city columns 2 times before address column.
+Somehow you need to copy surname,tel,city columns 3 times before address column.
 To do that you can simply use shiftAndCopyColumns() function like this.
 * @param copyStartCol the starting index of the column to be copied  
 * @param copyEndCol the ending index of the column to be copied  
